@@ -65,6 +65,7 @@ Windows_awaken_exp1227_06*****/libs/msc_x64.lib<br>
 ****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/qivw.h<br>
 拷贝第三方库到以下路径即可:<br>
 ****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.dll<br>
+****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.lib<br>
 ## 蓝图调用接口
 绑定代理,调用接口,等待回调
 ![image](DocumentPictures/P_Wakeup.png)  
