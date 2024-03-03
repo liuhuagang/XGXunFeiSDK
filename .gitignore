@@ -1,0 +1,25 @@
+# UE Project Base
+.vs/
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+DerivedDataCache/
+Build/
+.vsconfig
+*.sln
+# XG Package
+PackageTest/
+# SDK Folder
+SDKResources/Windows_awaken_exp1227_0654b4fb
+# lfs
+hooks/
+lfs/
+# iFlyTek Files
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_cmn.h
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_errors.h
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_types.h
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/qivw.h
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.dll
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.lib
+XunFeiSDKProject/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/wakeupresource.jet
