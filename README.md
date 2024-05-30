@@ -53,16 +53,16 @@ Windows_awaken_exp1227_06*****/include/msp_errors.h<br>
 Windows_awaken_exp1227_06*****/include/msp_types.h<br>
 Windows_awaken_exp1227_06*****/include/qivw.h<br>
 第三方库路径如下:<br>
-Windows_awaken_exp1227_06*****/include/msc_x64.dll<br>
+Windows_awaken_exp1227_06*****/bin/msc_x64.dll<br>
 Windows_awaken_exp1227_06*****/libs/msc_x64.lib<br>
 ## 拷贝资源到插件中
 拷贝核心资源到以下路径即可:<br>
 ****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/wakeupresource.jet<br>
 拷贝头文件到以下路径即可:<br>
-****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_cmn.h<br>
-****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_errors.h<br>
-****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/msp_types.h<br>
-****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/XGXunFeiSDKLibrary/qivw.h<br>
+****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/msp_cmn.h<br>
+****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/msp_errors.h<br>
+****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/msp_types.h<br>
+****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/Public/qivw.h<br>
 拷贝第三方库到以下路径即可:<br>
 ****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.dll<br>
 ****Project/Plugins/XGXunFeiSDK/Source/ThirdParty/XGXunFeiSDKLibrary/x64/Release/msc_x64.lib<br>

@@ -15,10 +15,10 @@
 
 
 
-#include "XGXunFeiSDKLibrary/msp_cmn.h"
-#include "XGXunFeiSDKLibrary/msp_errors.h"
-#include "XGXunFeiSDKLibrary/msp_types.h"
-#include "XGXunFeiSDKLibrary/qivw.h"
+#include "msp_cmn.h"
+#include "msp_errors.h"
+#include "msp_types.h"
+#include "qivw.h"
 
 
 #include <windows.h>
@@ -29,7 +29,7 @@
 //#include <errno.h>
 
 
-//16k²ÉÑùÂÊµÄ16bitÒôÆµ£¬Ò»Ö¡µÄ´óĞ¡Îª640B, Ê±³¤20ms
+//16ké‡‡æ ·ç‡çš„16bitéŸ³é¢‘ï¼Œä¸€å¸§çš„å¤§å°ä¸º640B, æ—¶é•¿20ms
 #define XGXUNFEIFRAME_LEN	640 
 
 
@@ -107,7 +107,7 @@ void FXGXunFeiSDKWakeupRunnable::Stop()
 
 void FXGXunFeiSDKWakeupRunnable::Exit()
 {
-	//ÍË³öµÇÂ¼
+	//é€€å‡ºç™»å½•
 	MSPLogout();
 
 	UXGXunFeiSDKWakeupSubsystem::GetWakeupSubsystem()->CallCloseListForWakeup();
@@ -119,7 +119,7 @@ int FXGXunFeiSDKWakeupRunnable::WakeUpCallBack(const char* sessionID, int msg, i
 	if (MSP_IVW_MSG_ERROR == msg)
 	{
 		bIsRunning =false;
-		//»½ĞÑ³ö´íÏûÏ¢
+		//å”¤é†’å‡ºé”™æ¶ˆæ¯
 		int32 ErrorCode = param1;
 
 		FString ErrorMessage =FString::Printf(TEXT("MSP_IVW_MSG_ERROR ErrorCode = %d"), ErrorCode);
@@ -131,7 +131,7 @@ int FXGXunFeiSDKWakeupRunnable::WakeUpCallBack(const char* sessionID, int msg, i
 	}
 	else if (MSP_IVW_MSG_WAKEUP == msg)
 	{
-		//»½ĞÑ³É¹¦ÏûÏ¢
+		//å”¤é†’æˆåŠŸæ¶ˆæ¯
 		WakeupFlage = 1;
 
 		auto WakeupInfo = StringCast<TCHAR>((char*)info);
@@ -171,46 +171,46 @@ void FXGXunFeiSDKWakeupRunnable::RunListen(const char* grammar_list, const char*
 	DWORD bufsize;
 	long len = 0;
 
-	//ÊäÈëÉè±¸
+	//è¾“å…¥è®¾å¤‡
 	HWAVEIN hWaveIn; 
 
-	//²É¼¯ÒôÆµµÄ¸ñÊ½£¬½á¹¹Ìå
+	//é‡‡é›†éŸ³é¢‘çš„æ ¼å¼ï¼Œç»“æ„ä½“
 	WAVEFORMATEX waveform; 
 
-	//²É¼¯ÒôÆµÊ±µÄÊı¾İ»º´æ
+	//é‡‡é›†éŸ³é¢‘æ—¶çš„æ•°æ®ç¼“å­˜
 	BYTE* pBuffer;
 
-	//²É¼¯ÒôÆµÊ±°üº¬Êı¾İ»º´æµÄ½á¹¹Ìå
+	//é‡‡é›†éŸ³é¢‘æ—¶åŒ…å«æ•°æ®ç¼“å­˜çš„ç»“æ„ä½“
 	WAVEHDR wHdr; 
 	HANDLE          wait;
 
-	//ÉùÒô¸ñÊ½ÎªPCM
+	//å£°éŸ³æ ¼å¼ä¸ºPCM
 	waveform.wFormatTag = WAVE_FORMAT_PCM;
 
-	//ÒôÆµ²ÉÑùÂÊ
+	//éŸ³é¢‘é‡‡æ ·ç‡
 	waveform.nSamplesPerSec = 16000;
 
-	//²ÉÑù±ÈÌØ
+	//é‡‡æ ·æ¯”ç‰¹
 	waveform.wBitsPerSample = 16;
 
-	//²ÉÑùÉùµÀÊı
+	//é‡‡æ ·å£°é“æ•°
 	waveform.nChannels = 1;
 
-	//Ã¿ÃëµÄÊı¾İÂÊ
+	//æ¯ç§’çš„æ•°æ®ç‡
 	waveform.nAvgBytesPerSec = 16000;
 
-	//Ò»¸ö¿éµÄ´óĞ¡£¬²ÉÑùbitµÄ×Ö½ÚÊı³ËÒÔÉùµÀÊı
+	//ä¸€ä¸ªå—çš„å¤§å°ï¼Œé‡‡æ ·bitçš„å­—èŠ‚æ•°ä¹˜ä»¥å£°é“æ•°
 	waveform.nBlockAlign = 2;
 
-	//Ò»°ãÎª0
+	//ä¸€èˆ¬ä¸º0
 	waveform.cbSize = 0;
 
 	wait = CreateEvent(NULL, 0, 0, NULL);
 
-	//Ê¹ÓÃwaveInOpenº¯Êı¿ªÆôÒôÆµ²É¼¯
+	//ä½¿ç”¨waveInOpenå‡½æ•°å¼€å¯éŸ³é¢‘é‡‡é›†
 	waveInOpen(&hWaveIn, WAVE_MAPPER, &waveform, (DWORD_PTR)wait, 0L, CALLBACK_EVENT);
 
-	//¿ª±ÙÊÊµ±´óĞ¡µÄÄÚ´æ´æ´¢ÒôÆµÊı¾İ£¬¿ÉÊÊµ±µ÷ÕûÄÚ´æ´óĞ¡ÒÔÔö¼ÓÂ¼ÒôÊ±¼ä£¬»ò²ÉÈ¡ÆäËûµÄÄÚ´æ¹ÜÀí·½°¸
+	//å¼€è¾Ÿé€‚å½“å¤§å°çš„å†…å­˜å­˜å‚¨éŸ³é¢‘æ•°æ®ï¼Œå¯é€‚å½“è°ƒæ•´å†…å­˜å¤§å°ä»¥å¢åŠ å½•éŸ³æ—¶é—´ï¼Œæˆ–é‡‡å–å…¶ä»–çš„å†…å­˜ç®¡ç†æ–¹æ¡ˆ
 	bufsize = 1024 * 500;
 
 	session_id = QIVWSessionBegin(grammar_list, session_begin_params, &err_code);
@@ -251,24 +251,24 @@ void FXGXunFeiSDKWakeupRunnable::RunListen(const char* grammar_list, const char*
 	wHdr.dwFlags = 0;
 	wHdr.dwLoops = 1;
 
-	//×¼±¸Ò»¸ö²¨ĞÎÊı¾İ¿éÍ·ÓÃÓÚÂ¼Òô
+	//å‡†å¤‡ä¸€ä¸ªæ³¢å½¢æ•°æ®å—å¤´ç”¨äºå½•éŸ³
 	waveInPrepareHeader(hWaveIn, &wHdr, sizeof(WAVEHDR));
 
-	//Ö¸¶¨²¨ĞÎÊı¾İ¿éÎªÂ¼ÒôÊäÈë»º´æ
+	//æŒ‡å®šæ³¢å½¢æ•°æ®å—ä¸ºå½•éŸ³è¾“å…¥ç¼“å­˜
 	waveInAddBuffer(hWaveIn, &wHdr, sizeof(WAVEHDR));
 
-	//¿ªÊ¼Â¼Òô
+	//å¼€å§‹å½•éŸ³
 	waveInStart(hWaveIn);
 
-	//µ¥´Î»½ĞÑ
+	//å•æ¬¡å”¤é†’
 	//while (audio_count< bufsize && wakeupFlage!=1&& bIsRunning)
 
-	while (audio_count < (long)bufsize&& bIsRunning)//³ÖĞø»½ĞÑ
+	while (audio_count < (long)bufsize&& bIsRunning)//æŒç»­å”¤é†’
 	{
-		//µÈ´ıÉùÒôÂ¼ÖÆ5s
+		//ç­‰å¾…å£°éŸ³å½•åˆ¶5s
 		Sleep(200);
 		
-		//16kÒôÆµ£¬10Ö¡ £¨Ê±³¤200ms£©
+		//16kéŸ³é¢‘ï¼Œ10å¸§ ï¼ˆæ—¶é•¿200msï¼‰
 		len = 10 * XGXUNFEIFRAME_LEN;
 
 		audio_stat = MSP_AUDIO_SAMPLE_CONTINUE;
@@ -276,7 +276,7 @@ void FXGXunFeiSDKWakeupRunnable::RunListen(const char* grammar_list, const char*
 		if (audio_count >= (long)wHdr.dwBytesRecorded)
 		{
 			len = audio_size;
-			//×îºóÒ»¿é
+			//æœ€åä¸€å—
 			audio_stat = MSP_AUDIO_SAMPLE_LAST; 
 		}
 		
@@ -312,7 +312,7 @@ void FXGXunFeiSDKWakeupRunnable::RunListen(const char* grammar_list, const char*
 		}
 		audio_count += len;
 	}
-	//Í£Ö¹Â¼Òô
+	//åœæ­¢å½•éŸ³
 	waveInReset(hWaveIn);
 	
 	if (NULL != pBuffer)

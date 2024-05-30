@@ -17,6 +17,15 @@
 	"EnabledByDefault": false,
 	"Modules": [
 		{
+			"Name": "XGXunFeiSDKLibrary",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+
+		},
+		{
 			"Name": "XGXunFeiSDK",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",

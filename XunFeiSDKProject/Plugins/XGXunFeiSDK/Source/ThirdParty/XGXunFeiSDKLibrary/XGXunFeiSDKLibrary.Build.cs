@@ -64,9 +64,15 @@ public class XGXunFeiSDKLibrary : ModuleRules
 
     public XGXunFeiSDKLibrary(ReadOnlyTargetRules Target) : base(Target)
 	{
-		Type = ModuleType.External;
+        //Type = ModuleType.External;
 
-		PublicSystemIncludePaths.Add("$(ModuleDir)/Public");
+        PrivateDependencyModuleNames.AddRange(
+            new string[] {
+                "Core",
+            }
+        );
+
+        PublicSystemIncludePaths.Add("$(ModuleDir)/Public");
 
 		if (Target.Platform == UnrealTargetPlatform.Win64)
 		{
