@@ -64,13 +64,13 @@ public class XGXunFeiSDKLibrary : ModuleRules
 
     public XGXunFeiSDKLibrary(ReadOnlyTargetRules Target) : base(Target)
 	{
-        //Type = ModuleType.External;
+        Type = ModuleType.External;
 
-        PrivateDependencyModuleNames.AddRange(
+/*        PrivateDependencyModuleNames.AddRange(
             new string[] {
                 "Core",
             }
-        );
+        );*/
 
         PublicSystemIncludePaths.Add("$(ModuleDir)/Public");
 
